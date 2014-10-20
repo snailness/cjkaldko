@@ -32,15 +32,13 @@ public class Main {
         // TODO code application logic here
         if(args.length > 0){
             String url = args[0];
-            url = "http://www.youku.com/playlist_show/id_5654073.html?sf=10300";
-//            pickVideo(url);
-        }else{
-            String url = "http://www.youku.com/playlist_show/id_5654073.html?sf=10300";
+            if("".equals(url)){
+                url = "http://www.youku.com/playlist_show/id_5654073.html?sf=10300";
+            }
             PickBase task = PickFunction.get(url);
             while(task.pick()){
                 task.pick();
             }
-            
-        }  
+        }
     }
 }
