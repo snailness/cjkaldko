@@ -57,7 +57,7 @@ public class UploadVideo {
                 + "&time=" + time
                 + "&havetime=" + flag
                 ;
-        Document result = HttpHelper.httpGet(url);
+        Document result = HttpHelper.httpGet(URLEncoder.encode(url));
         if(result != null){
             String t = result.getElementsByTag("body").toString();
             if(t.indexOf("0") != -1){
