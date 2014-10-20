@@ -21,7 +21,7 @@ import picks.tasks.PickImageTask;
  */
 public class UploadVideo {
     
-    private String URL = "http://218.244.156.133/startcraft/admin/script/api.php?action=uploadVideoInfo";
+    private String URL = "http://218.244.156.133/starcraft/admin/script/api.php?action=uploadVideoInfo";
     private List<VideoModel> mVideoList = new ArrayList<VideoModel>();
     
     private String mTitle = "";
