@@ -70,7 +70,7 @@ public class VideoModel {
     }
     
     public String toString(){
-        return ITEM + name + SUB_ITEM + URLEncoder.encode(url) + SUB_ITEM + during + SUB_ITEM + URLEncoder.encode(image_url);
+        return ITEM + name + SUB_ITEM + url + SUB_ITEM + during + SUB_ITEM + image_url;
     }
 
 }
