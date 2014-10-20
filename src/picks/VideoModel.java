@@ -13,8 +13,8 @@ import java.net.URLEncoder;
  * @author koudejian
  */
 public class VideoModel {
-    String ITEM = "#item#";
-    String SUB_ITEM = "#slip#";
+    String ITEM = "|item|";
+    String SUB_ITEM = "|slip|";
     
     String tid = "0";
     String url = null;          //视频地址
@@ -70,7 +70,7 @@ public class VideoModel {
     }
     
     public String toString(){
-        return ITEM + name + SUB_ITEM + url + SUB_ITEM + during + SUB_ITEM + image_url;
+        return ITEM + name + SUB_ITEM + URLEncoder.encode(url) + SUB_ITEM + during + SUB_ITEM + URLEncoder.encode(image_url);
     }
 
 }

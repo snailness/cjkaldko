@@ -25,7 +25,7 @@ public class HttpHelper {
             return null;
         }
         Document html = null;
-        System.out.println(url);
+//        System.out.println(url);
         try {
             html = Jsoup
                     .connect(url)
