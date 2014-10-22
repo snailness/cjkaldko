@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import picks.HttpHelper;
-import picks.VideoModel;
+import picks.models.VideoModel;
 
 /**
  *

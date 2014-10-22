@@ -12,8 +12,9 @@ import java.util.List;
 import org.jsoup.nodes.Document;
 import picks.Config;
 import picks.HttpHelper;
-import picks.VideoModel;
-import picks.tasks.PickImageTask;
+import picks.models.Parameters;
+import picks.models.VideoModel;
+
 
 /**
  *
@@ -21,7 +22,7 @@ import picks.tasks.PickImageTask;
  */
 public class UploadVideo {
     
-    private String URL = "http://218.244.156.133/starcraft/admin/script/api.php?action=uploadVideoInfo";
+    private String URL = "http://218.244.156.133/starcraft/admin/script/api.php";
     private List<VideoModel> mVideoList = new ArrayList<VideoModel>();
     
     private String mTitle = "";
@@ -50,16 +51,24 @@ public class UploadVideo {
         upload("", "0");
     }
     public void upload(String time, String flag){
-        String url = URL
-//                + "&action=uploadVideoInfo"
-                + "&title=" + mTitle
-                + "&data=" + toString()
-                + "&time=" + time
-                + "&havetime=" + flag
-                ;
-        Document result = HttpHelper.httpGet(URLEncoder.encode(url));
+        List<Parameters> param = new ArrayList<Parameters>();
+        param.add(new Parameters("action", "uploadVideoInfo"));
+        param.add(new Parameters("title", mTitle));
+        param.add(new Parameters("data", toString()));
+        param.add(new Parameters("time", time));
+        param.add(new Parameters("havetime", flag));
+//        String url = URL
+////                + "&action=uploadVideoInfo"
+//                + "&title=" + mTitle
+//                + "&data=" + toString()
+//                + "&time=" + time
+//                + "&havetime=" + flag
+//                ?action=uploadVideoInfo
+//                ;
+        Document result = HttpHelper.httpPost(URL, param);
         if(result != null){
             String t = result.getElementsByTag("body").toString();
+//            System.out.println(t);
             if(t.indexOf("0") != -1){
                 System.out.println("pickdone");
             }else{
