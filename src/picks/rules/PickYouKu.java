@@ -9,7 +9,7 @@ package picks.rules;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import picks.VideoModel;
+import picks.models.VideoModel;
 
 /**
  *
