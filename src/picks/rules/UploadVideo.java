@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jsoup.nodes.Document;
 import picks.Config;
-import picks.HttpHelper;
+import picks.utils.HttpHelper;
 import picks.models.Parameters;
 import picks.models.VideoModel;
 
@@ -57,14 +57,6 @@ public class UploadVideo {
         param.add(new Parameters("data", toString()));
         param.add(new Parameters("time", time));
         param.add(new Parameters("havetime", flag));
-//        String url = URL
-////                + "&action=uploadVideoInfo"
-//                + "&title=" + mTitle
-//                + "&data=" + toString()
-//                + "&time=" + time
-//                + "&havetime=" + flag
-//                ?action=uploadVideoInfo
-//                ;
         Document result = HttpHelper.httpPost(URL, param);
         if(result != null){
             String t = result.getElementsByTag("body").toString();

@@ -34,18 +34,30 @@ public class Main {
             String url = args[0];
             if("".equals(url)){
                 url = "http://www.youku.com/playlist_show/id_5654073.html?sf=10300";
+                return;
             }
             PickBase task = PickFunction.get(url);
-            while(task.pick()){
-                task.pick();
+            if(task == null){
+                return;
             }
-        }else{
-            String url = "";
-            url = "http://www.youku.com/playlist_show/id_5654073.html?sf=10300";
-            PickBase task = PickFunction.get(url);
             while(task.pick()){
                 task.pick();
             }
         }
+        /*
+        else{
+            String url = "";
+//            url = "http://www.youku.com/playlist_show/id_5654073.html?sf=10300";
+            url = "http://sc2.plu.cn/vod/gsl2011/";
+//            url = "http://www.soku.com/search_playlistdetail?q=%E6%98%9F%E9%99%85%E4%BA%89%E9%9C%B82&fi=FMTg0MDAwNDM3Mg==&fs=14&mr=%E6%98%9F%E9%99%85%2C%E6%98%9F%E9%9A%9B%2C%E4%BA%89%E9%9C%B8%2C%E7%88%AD%E8%A6%87%2C2&sf=10100";
+            PickBase task = PickFunction.get(url);
+            if(task == null){
+                return;
+            }
+            while(task.pick()){
+                task.pick();
+            }
+        }
+        //*/
     }
 }

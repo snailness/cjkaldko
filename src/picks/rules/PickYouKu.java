@@ -60,4 +60,19 @@ public class PickYouKu extends PickBase{
         }
     }
     
+    @Override
+    public boolean haveNext(Document document){
+        boolean result = false;
+        Elements pages = document.getElementsByClass("pageBar");
+        String pages_html = pages.toString();
+        if(pages_html.contains("下一页")){
+            String next = getTextStrDesc("<a href=\"", "下一页", pages_html);
+            this.mUrl = getTextStr(null, "\"", next);
+            if(!"".equals(mUrl)){
+                result = true;
+            }
+        }
+        return result;
+    }
+    
 }
