@@ -7,6 +7,8 @@
 package picks.factorys;
 
 import picks.rules.PickBase;
+import picks.rules.PickSC2;
+import picks.rules.PickSuku;
 import picks.rules.PickYouKu;
 
 /**
@@ -17,7 +19,7 @@ public class PickFunction {
     
     static String YOUKU = "http://www.youku.com/playlist_show";
     static String SUKU = "http://www.soku.com/search_playlistdetail";
-    
+    static String SC2 = "http://sc2.plu.cn";
     public static PickBase get(String url){
         PickBase pickBase = null;
         if(url == null){
@@ -25,6 +27,10 @@ public class PickFunction {
         }else if(url.startsWith(YOUKU)){
             pickBase = new PickYouKu(url);
         }else if(url.startsWith(SUKU)){
+            pickBase = new PickSuku(url);
+//            pickBase = null;
+        }else if(url.startsWith(SC2)){
+            pickBase = new PickSC2(url);
         }
         return pickBase;
     }

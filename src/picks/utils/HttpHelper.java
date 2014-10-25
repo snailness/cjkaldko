@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package picks;
+package picks.utils;
 
 import java.io.IOException;
 import java.util.List;

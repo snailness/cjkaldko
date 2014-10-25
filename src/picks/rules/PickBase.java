@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import picks.HttpHelper;
+import picks.utils.HttpHelper;
 import picks.models.VideoModel;
 
 /**
@@ -21,6 +21,7 @@ import picks.models.VideoModel;
  */
 public abstract class PickBase extends UploadVideo{
     
+    public String mTime = null;
     public String mUrl = null;
     
     public PickBase(String url){
@@ -31,19 +32,7 @@ public abstract class PickBase extends UploadVideo{
     
     public abstract void pickInfo(Document document);
     
-    public boolean haveNext(Document document){
-        boolean result = false;
-        Elements pages = document.getElementsByClass("pageBar");
-        String pages_html = pages.toString();
-        if(pages_html.contains("下一页")){
-            String next = getTextStrDesc("<a href=\"", "下一页", pages_html);
-            this.mUrl = getTextStr(null, "\"", next);
-            if(!"".equals(mUrl)){
-                result = true;
-            }
-        }
-        return result;
-    }
+    public abstract boolean haveNext(Document document);
     
     public boolean pick(){
         Document document = HttpHelper.httpGet(mUrl);
@@ -55,9 +44,14 @@ public abstract class PickBase extends UploadVideo{
         //pick
         pickInfo(document);
 
+        //*
         //upload
-        upload();
-        
+        if(this.mTime == null){
+            upload();
+        }else{
+            upload(mTime, "1");
+        }
+        //*/
         return haveNext(document);
     }
     
